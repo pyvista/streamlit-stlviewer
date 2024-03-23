@@ -3,8 +3,6 @@ import streamlit as st
 import pyvista as pv
 from pyvista import examples
 
-pv.start_xvfb()
-
 uploaded_file = st.file_uploader("Upload a STL:", ["stl"], False)
 st.sidebar.title("STL viewer")
 
