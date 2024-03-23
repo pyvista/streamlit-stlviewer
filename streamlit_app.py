@@ -12,14 +12,14 @@ if uploaded_file:
     with tempfile.NamedTemporaryFile(suffix=".stl") as fp:
         fp.write(uploaded_file.getbuffer())
         reader = pv.STLReader(fp.name)
-        dataset = reader.read()
+        mesh = reader.read()
 else:
-    dataset = examples.download_bunny()
+    mesh = examples.download_bunny()
 
 color = st.sidebar.color_picker("Pick A Color", "#00f900")
 plotter = pv.Plotter(window_size=[580, 400])
 plotter.background_color = "white"
-plotter.add_mesh(dataset, color=color)
+plotter.add_mesh(mesh, color=color)
 
 with tempfile.NamedTemporaryFile(suffix=".html") as fp:
     other = plotter.export_html(fp.name, backend="pythreejs")
