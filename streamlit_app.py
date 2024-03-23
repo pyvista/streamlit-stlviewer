@@ -1,19 +1,22 @@
 import tempfile
 import streamlit as st
 import pyvista as pv
+from pyvista import examples
 
-uploaded_file = st.file_uploader("Upload a STL:", ["stl"], False)
 
 st.sidebar.title("STL viewer")
 
+uploaded_file = st.file_uploader("Upload a STL:", ["stl"], False)
 if uploaded_file:
     with tempfile.NamedTemporaryFile(suffix=".stl") as fp:
         fp.write(uploaded_file.getbuffer())
         reader = pv.STLReader(fp.name)
         mesh = reader.read()
+else:
+    mesh = examples.download_bunny()
 
 color = st.sidebar.selectbox("Pick a color:", ["white", "green", "blue"])
-plotter = pv.Plotter(border=True, window_size=[580, 400])
+plotter = pv.Plotter(window_size=[800, 400])
 plotter.background_color = "white"
 plotter.add_mesh(mesh, color=color)
 
