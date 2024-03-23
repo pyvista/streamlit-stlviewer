@@ -16,7 +16,7 @@ if uploaded_file:
 else:
     dataset = examples.download_bunny()
 
-color = st.sidebar.color_picker('Pick A Color', '#00f900')
+color = st.sidebar.color_picker("Pick A Color", "#00f900")
 plotter = pv.Plotter(window_size=[580, 400])
 plotter.background_color = "white"
 plotter.add_mesh(dataset, color=color)
