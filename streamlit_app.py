@@ -3,9 +3,9 @@ import streamlit as st
 import pyvista as pv
 from pyvista import examples
 
-uploaded_file = st.file_uploader("Upload a STL:", ["stl"], False)
 st.sidebar.title("STL viewer")
 
+uploaded_file = st.file_uploader("Upload a STL:", ["stl"], False)
 if uploaded_file:
     with tempfile.NamedTemporaryFile(suffix=".stl") as fp:
         fp.write(uploaded_file.getbuffer())
