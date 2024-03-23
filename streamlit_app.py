@@ -4,19 +4,19 @@ from pyvista import examples
 
 pv.set_jupyter_backend('pythreejs')
 
-uploadedFile = st.file_uploader("Upload a STL:",["stl"],False)
+uploaded_file = st.file_uploader("Upload a STL:",["stl"],False)
 
 st.sidebar.title("STL viewer")
 
-if uploadedFile:
+if uploaded_file:
+    color = st.sidebar.selectbox("Pick a color:",["white","green","blue"])
     stlTemp = "./temp.stl"
     with open(stlTemp, "wb") as f: 
-        f.write(uploadedFile.getbuffer())
+        f.write(uploaded_file.getbuffer())
     reader = pv.STLReader(stlTemp)
     plotter = pv.Plotter(
         border=True,
         window_size=[580,400]) 
-    color = st.sidebar.selectbox("Pick a color:",["white","green","blue"])
     plotter.background_color = "white"
     mesh = reader.read()
     plotter.add_mesh(mesh, color=color)
