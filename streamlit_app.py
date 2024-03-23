@@ -15,7 +15,7 @@ if uploaded_file:
 else:
     mesh = examples.download_bunny()
 
-color = st.sidebar.selectbox("Pick a color:", ["white", "green", "blue"])
+color = st.sidebar.color_picker("Pick A Color", "#00f900")
 plotter = pv.Plotter(window_size=[800, 400])
 plotter.background_color = "white"
 plotter.add_mesh(mesh, color=color)
