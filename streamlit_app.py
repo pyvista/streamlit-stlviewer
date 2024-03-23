@@ -3,6 +3,7 @@ import streamlit as st
 import pyvista as pv
 from pyvista import examples
 
+
 st.sidebar.title("STL viewer")
 
 uploaded_file = st.file_uploader("Upload a STL:", ["stl"], False)
@@ -15,7 +16,7 @@ else:
     mesh = examples.download_bunny()
 
 color = st.sidebar.color_picker("Pick A Color", "#00f900")
-plotter = pv.Plotter(window_size=[580, 400])
+plotter = pv.Plotter(window_size=[800, 400])
 plotter.background_color = "white"
 plotter.add_mesh(mesh, color=color)
 
