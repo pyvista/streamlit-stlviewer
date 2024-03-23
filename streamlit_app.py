@@ -2,8 +2,6 @@ import tempfile
 import streamlit as st
 import pyvista as pv
 
-pv.set_jupyter_backend("pythreejs")
-
 uploaded_file = st.file_uploader("Upload a STL:", ["stl"], False)
 
 st.sidebar.title("STL viewer")
