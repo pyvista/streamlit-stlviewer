@@ -15,10 +15,16 @@ if uploaded_file:
 else:
     mesh = examples.download_bunny()
 
-color = st.sidebar.color_picker("Pick A Color", "#00f900")
 plotter = pv.Plotter(window_size=[800, 600])
-plotter.background_color = "white"
-plotter.add_mesh(mesh, color=color)
+plotter.background_color = st.sidebar.color_picker(
+    "Background color of this renderer.", "#000000"
+)
+plotter.add_mesh(
+    mesh,
+    color=st.sidebar.color_picker(
+        "Use to make the entire mesh have a single solid color.", "#00f900"
+    ),
+)
 
 with tempfile.NamedTemporaryFile(suffix=".html") as fp:
     other = plotter.export_html(fp.name, backend="pythreejs")
