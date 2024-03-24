@@ -16,7 +16,7 @@ else:
     mesh = examples.download_bunny()
 
 color = st.sidebar.color_picker("Pick A Color", "#00f900")
-plotter = pv.Plotter(window_size=[800, 400])
+plotter = pv.Plotter(window_size=[800, 600])
 plotter.background_color = "white"
 plotter.add_mesh(mesh, color=color)
 
@@ -24,4 +24,4 @@ with tempfile.NamedTemporaryFile(suffix=".html") as fp:
     other = plotter.export_html(fp.name, backend="pythreejs")
     with open(fp.name, "r") as f:
         model = f.read()
-        st.components.v1.html(model, height=600, width=600)
+        st.components.v1.html(model, width=800, height=600)
