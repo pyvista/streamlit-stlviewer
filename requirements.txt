@@ -1,5 +1,6 @@
 click<=8.0.4  # streamlit compatibility
 ipywidgets==7.7.1
+panel
 pythreejs
 pyvista<0.38.0
 streamlit

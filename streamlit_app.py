@@ -20,8 +20,11 @@ plotter = pv.Plotter(window_size=[800, 400])
 plotter.background_color = "white"
 plotter.add_mesh(mesh, color=color)
 
+backend = st.sidebar.selectbox(
+    "You have the option of exposing the scene.", ("pythreejs", "panel")
+)
 with tempfile.NamedTemporaryFile(suffix=".html") as fp:
-    other = plotter.export_html(fp.name, backend="pythreejs")
+    other = plotter.export_html(fp.name, backend=backend)
     with open(fp.name, "r") as f:
         model = f.read()
         st.components.v1.html(model, height=600, width=600)
