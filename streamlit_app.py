@@ -8,8 +8,10 @@ st.sidebar.title("STL viewer")
 
 uploaded_file = st.file_uploader("Upload a STL:", ["stl"], False)
 if uploaded_file:
-    reader = pv.STLReader(uploaded_file.name)
-    mesh = reader.read()
+    with tempfile.NamedTemporaryFile(suffix=".stl") as fp:
+        fp.write(uploaded_file.getbuffer())
+        reader = pv.STLReader(fp.name)
+        mesh = reader.read()
 else:
     mesh = examples.download_bunny()
 
