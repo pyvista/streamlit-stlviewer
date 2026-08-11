@@ -1,8 +1,8 @@
 import tempfile
-import streamlit as st
-import pyvista as pv
-from pyvista import examples
 
+import pyvista as pv
+import streamlit as st
+from pyvista import examples
 
 st.sidebar.title("STL viewer")
 
